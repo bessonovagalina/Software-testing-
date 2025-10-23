@@ -1,0 +1,65 @@
+**Test Case Description **
+
+**Test Case Title:**
+Automation of user registration, login, account operations and fund transfer on Parabank website
+
+**Objective:**
+To verify that the main features of the Parabank online banking website work correctly: user registration, login, viewing account activity, performing a transfer, and logging out.
+
+**Preconditions:**
+
+* The user opens [https://parabank.parasoft.com/parabank/index.htm](https://parabank.parasoft.com/parabank/index.htm)
+* SeleniumLibrary is installed and configured
+* Locators and test data are defined in `locators.py` and `testData.py`
+
+---
+
+### **Automation Steps:**
+
+1. **Register a new user**
+
+   * Open the Parabank website.
+   * Click on “Register”.
+   * Fill in the registration form: first name, last name, address, city, state, ZIP code, phone, SSN, username, password, and password confirmation.
+   * Click “Register”.
+   * Verify that registration was successful.
+
+2. **Login**
+
+   * Enter username and password.
+   * Click “Log In”.
+   * Verify successful login.
+
+3. **Account Overview**
+
+   * Open the “Accounts Overview” section.
+   * Select the first available account.
+   * Choose a month (e.g., June) and transaction type (Credit).
+   * Click “Go”.
+   * Verify that the transactions table appears.
+
+4. **Transfer Funds**
+
+   * Go to the “Transfer Funds” page.
+   * Enter a transfer amount (e.g., 10,000,000).
+   * Confirm the transfer.
+   * Verify success message appears.
+
+5. **Find Transactions**
+
+   * Go to the “Find Transactions” page.
+   * Enter a transaction date.
+   * Click “Find Transactions”.
+   * Verify that results are displayed.
+
+6. **Log Out**
+
+   * Click the “Log Out” button.
+   * Verify that the login page is displayed again.
+
+---
+
+**Expected Result:**
+All test steps execute successfully without errors, and the user can log out properly.
+
+---

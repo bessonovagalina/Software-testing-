@@ -1,0 +1,16 @@
+Firstname  = 'Galina'
+lastname = 'Bessonova'
+address = '123 Main St.'
+city = 'Milano'
+state = 'NY'
+zipcode = '12345'
+phone = '55555'
+SSN = '12345'
+name = 'john'
+password = '241540'
+confirm = '241540'
+
+loginUserName = 'john'
+loginPassword = 'demo'
+
+baseUrl = 'https://parabank.parasoft.com/parabank/index.htm'
