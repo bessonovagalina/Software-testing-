@@ -31,14 +31,14 @@ Sign Up
     Sleep    2s
 
 Log In
-    Click Element    xpath=//a[contains(text(),'Log In')]
     Wait Until Element Is Visible    ${signUpUsername}    timeout=20
 
-    Input Text        ${loginUserNameField}     ${loginUserName}
-    Input Password    ${loginPasswordField}     ${loginPassword}
+    Input Text        ${signUpUsername}      ${loginUserName}
+    Input Password    ${signUpPassword}      ${loginPassword}
 
-    Click Element     ${logInButton}
+    Click Element     ${signUpFormButton}
     Sleep    2s
+
 
 Account Overview
     Click Element    xpath=//a[contains(text(),'Accounts Overview')]
