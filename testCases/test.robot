@@ -9,9 +9,10 @@ Suite Teardown    Close Browser
 
 *** Test Cases ***
 PARABANK_TEST
+    Open Parabank
     Sign Up
     Log in
     Account Overview
-    Transfer funds
+    Transfer Funds
     Find Transactions
     Log Out
