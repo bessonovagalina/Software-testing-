@@ -42,7 +42,14 @@ Log In
 
 Account Overview
     Click Element    xpath=//a[contains(text(),'Accounts Overview')]
-    Wait Until Element Is Visible    id=accountTable    timeout=20
+    Wait Until Element Is Visible    ${account}    timeout=20
+    Sleep    1s
+
+    # Переходим в конкретный аккаунт
+    Click Element    ${account}
+
+    # Ждём, пока появятся фильтры по операциям
+    Wait Until Element Is Visible    ${activityPeriod}    timeout=20
     Sleep    1s
 
     Click Element    ${activityPeriod}
@@ -56,6 +63,8 @@ Account Overview
     Sleep    2s
 
     Page Should Contain Element    ${transactionsTable}
+    Sleep    1s
+
 
 Transfer Funds
     Click Element    ${transferFunds}
