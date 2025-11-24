@@ -9,10 +9,10 @@ ${REMOTE_URL}    https://%{BROWSERSTACK_USERNAME}:%{BROWSERSTACK_ACCESS_KEY}@hub
 
 *** Keywords ***
 Open Parabank
-    Open Browser    ${baseUrl}    browser=chrome    remote_url=${REMOTE_URL}
+    ${browser}=    Set Variable If    '${BROWSER}'=='${EMPTY}'    chrome    ${BROWSER}
+    Open Browser    ${baseUrl}    browser=${browser}    remote_url=${REMOTE_URL}
     Maximize Browser Window
     Wait Until Page Contains Element    xpath=//a[contains(text(),"Register")]    timeout=20
-
 
 Sign Up
     Click Element    xpath=//a[contains(text(),'Register')]
