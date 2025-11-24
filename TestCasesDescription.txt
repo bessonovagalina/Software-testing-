@@ -1,0 +1,73 @@
+Test Suite: PARABANK Automated Tests
+Description:
+A set of automated UI tests created using Robot Framework, SeleniumLibrary, and BrowserStack.
+The goal is to validate that the main functionality of the Parabank website works correctly across different browsers (Chrome and Firefox).
+
+----------------------------------------------------------------------
+Test Case: PARABANK_TEST
+----------------------------------------------------------------------
+Objective:
+Verify the full end-to-end user workflow: registration, login, account overview,
+transaction filtering, funds transfer, transaction search, and logout.
+
+Preconditions:
+- Parabank website is reachable.
+- Test data is defined in testData.py.
+- Jenkins provides BROWSERSTACK_USERNAME and BROWSERSTACK_ACCESS_KEY.
+- The selected browser is passed via:  -v BROWSER:<browsername>
+
+Steps:
+1. Open Parabank
+   - Open the BrowserStack browser (Chrome/Firefox).
+   - Navigate to the Parabank homepage.
+   - Verify that the “Register” link is visible.
+
+2. Sign Up
+   - Click “Register”.
+   - Fill out the registration form using provided test data.
+   - Submit the form.
+   - Verify that registration is successful.
+
+3. Log In
+   - Enter the username and password of the newly registered user.
+   - Click the Login button.
+   - Verify successful authentication.
+
+4. Account Overview
+   - Navigate to “Accounts Overview”.
+   - Open the first account in the table.
+   - Apply transaction filters:
+        • period – 6th item in the dropdown
+        • transaction type – Credit
+   - Click “Go”.
+   - Verify that the transaction table appears.
+
+5. Transfer Funds
+   - Navigate to “Transfer Funds”.
+   - Enter the amount (e.g., 100).
+   - Submit the transfer.
+   - Verify the transfer confirmation.
+
+6. Find Transactions
+   - Navigate to “Find Transactions”.
+   - Enter a date (23-10-2010).
+   - Click “Find”.
+   - Verify that results are displayed.
+
+7. Log Out
+   - Click “Log Out”.
+   - Verify successful logout.
+
+Postconditions:
+- Browser closes.
+
+Expected Result:
+All steps execute without errors, all pages load correctly, and expected UI elements appear.
+
+----------------------------------------------------------------------
+Browser Matrix:
+This test runs on:
+- Google Chrome (BrowserStack)
+- Mozilla Firefox (BrowserStack)
+----------------------------------------------------------------------
+
