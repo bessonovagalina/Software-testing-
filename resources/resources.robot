@@ -22,8 +22,8 @@ Open Parabank
     ...    browserVersion=latest
     ...    bstack:options=${bstack_options}
 
-    Open Browser    ${baseUrl}    remote
-    ...    remote_url=https://hub-cloud.browserstack.com/wd/hub
+    Open Browser    ${baseUrl}    ${BROWSER}
+    ...    remote_url=${BS_REMOTE_URL}
     ...    options=${options}
 
     Maximize Browser Window
