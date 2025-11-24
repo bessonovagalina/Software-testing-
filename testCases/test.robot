@@ -5,6 +5,8 @@ Suite Teardown    Close Browser
 
 *** Variables ***
 
+${BROWSER}    chrome
+
 *** Keywords ***
 
 *** Test Cases ***
