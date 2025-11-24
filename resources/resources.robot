@@ -2,27 +2,16 @@
 Library    SeleniumLibrary
 Variables  ./locators.py
 Variables  ./testData.py
-Variables  ./browserstack_credentials.py
+
+*** Variables ***
+${REMOTE_URL}    https://%{BROWSERSTACK_USERNAME}:%{BROWSERSTACK_ACCESS_KEY}@hub.browserstack.com/wd/hub
+
 
 *** Keywords ***
 Open Parabank
-    ${caps}=    Create Dictionary
-    ...    browserName=${BROWSER}
-    ...    browserVersion=latest
-    ...    os=Windows
-    ...    osVersion=11
-    ...    buildName=Parabank Build
-    ...    sessionName=${BROWSER} run
-    ...    userName=%{BROWSERSTACK_USERNAME}
-    ...    accessKey=%{BROWSERSTACK_ACCESS_KEY}
-
-    Open Browser    ${baseUrl}    ${BROWSER}
-    ...    remote_url=https://hub-cloud.browserstack.com/wd/hub
-    ...    desired_capabilities=${caps}
-
+    Open Browser    ${baseUrl}    browser=chrome    remote_url=${REMOTE_URL}
     Maximize Browser Window
     Wait Until Page Contains Element    xpath=//a[contains(text(),"Register")]    timeout=20
-
 
 
 Sign Up
