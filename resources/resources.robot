@@ -9,7 +9,20 @@ ${REMOTE_URL}    https://%{BROWSERSTACK_USERNAME}:%{BROWSERSTACK_ACCESS_KEY}@hub
 *** Keywords ***
 
 Open Parabank
-    Open Browser    ${baseUrl}    browser=chrome       remote_url=${REMOTE_URL}
+    ${browserstack_options}=    Create Dictionary
+    ...    os=Windows
+    ...    osVersion=11
+    ...    buildName=Parabank Build
+    ...    sessionName=${BROWSER} Run
+
+    ${browser_caps}=    Create Dictionary
+    ...    browserName=${BROWSER}
+    ...    browserVersion=latest
+    ...    bstack:options=${browserstack_options}
+
+    Open Browser    ${baseUrl}    ${BROWSER}    remote_url=http://hub.browserstack.com/wd/hub
+    ...    desired_capabilities=${browser_caps}
+
     Maximize Browser Window
     Wait Until Page Contains Element    xpath=//a[contains(text(),"Register")]    timeout=20
 
