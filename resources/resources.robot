@@ -4,27 +4,26 @@ Variables  ./locators.py
 Variables  ./testData.py
 
 *** Variables ***
-${REMOTE_URL}    https://%{BROWSERSTACK_USERNAME}:%{BROWSERSTACK_ACCESS_KEY}@hub.browserstack.com/wd/hub
+${BS_REMOTE_URL}    https://hub-cloud.browserstack.com/wd/hub
 
 *** Keywords ***
-
 Open Parabank
-    ${browserstack_options}=    Create Dictionary
+    ${bstack_options}=    Create Dictionary
     ...    os=Windows
     ...    osVersion=11
     ...    buildName=Parabank Build
-    ...    sessionName=${BROWSER} Run
+    ...    sessionName=${BROWSER} run
+    ...    userName=%{BROWSERSTACK_USERNAME}
+    ...    accessKey=%{BROWSERSTACK_ACCESS_KEY}
 
-    ${browser_caps}=    Create Dictionary
+    ${options}=    Create Dictionary
     ...    browserName=${BROWSER}
     ...    browserVersion=latest
-    ...    bstack:options=${browserstack_options}
+    ...    bstack:options=${bstack_options}
 
-    Open Browser    ${baseUrl}    ${BROWSER}    remote_url=http://hub.browserstack.com/wd/hub
-    ...    desired_capabilities=${browser_caps}
-
-    Maximize Browser Window
-    Wait Until Page Contains Element    xpath=//a[contains(text(),"Register")]    timeout=20
+    Open Browser    ${baseUrl}    ${BROWSER}
+    ...    remote_url=${BS_REMOTE_URL}
+    ...    options=${options}
 
 Sign Up
     Click Element    xpath=//a[contains(text(),'Register')]
