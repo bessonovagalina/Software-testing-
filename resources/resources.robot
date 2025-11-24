@@ -7,7 +7,9 @@ Variables  ./testData.py
 ${BS_REMOTE_URL}    https://hub-cloud.browserstack.com/wd/hub
 
 *** Keywords ***
+
 Open Parabank
+    # 1. BrowserStack generic options
     ${bstack_options}=    Create Dictionary
     ...    os=Windows
     ...    osVersion=11
@@ -16,17 +18,20 @@ Open Parabank
     ...    userName=%{BROWSERSTACK_USERNAME}
     ...    accessKey=%{BROWSERSTACK_ACCESS_KEY}
 
+    # 2. Browser capabilities
     ${caps}=    Create Dictionary
     ...    browserName=${BROWSER}
     ...    browserVersion=latest
     ...    bstack:options=${bstack_options}
 
+    # 3. Открываем браузер удалённо на BrowserStack
     Open Browser    ${baseUrl}    ${BROWSER}
-    ...    remote_url=https://hub-cloud.browserstack.com/wd/hub
+    ...    remote_url=${BS_REMOTE_URL}
     ...    desired_capabilities=${caps}
 
     Maximize Browser Window
     Wait Until Page Contains Element    xpath=//a[contains(text(),"Register")]    timeout=20
+
 
 Sign Up
     Click Element    xpath=//a[contains(text(),'Register')]
