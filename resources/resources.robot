@@ -2,6 +2,7 @@
 Library    SeleniumLibrary
 Variables  ./locators.py
 Variables  ./testData.py
+Variables  ./browserstack_credentials.py
 
 *** Keywords ***
 Open Parabank
