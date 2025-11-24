@@ -28,11 +28,6 @@ Open Parabank
     Maximize Browser Window
     Wait Until Page Contains Element    xpath=//a[contains(text(),"Register")]    timeout=20
 
-
-Open Browser    ${baseUrl}    ${BROWSER}
-    remote_url=${BS_REMOTE_URL}
-    options=${options}
-
 Sign Up
     Click Element    xpath=//a[contains(text(),'Register')]
     Wait Until Element Is Visible    ${UserFirstnameField}    timeout=20
