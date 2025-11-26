@@ -15,7 +15,7 @@ Open Parabank
     Wait Until Page Contains Element    xpath=//a[contains(text(),"Register")]    timeout=20
 
 Sign Up
-    Execute Javascript    document.querySelector("#headerPanel > ul.button").setAttribute('hidden', '');
+    #Execute Javascript    document.querySelector("#headerPanel > ul.button").setAttribute('hidden', '');
 
     Click Element    xpath=//a[contains(text(),'Register')]
     Wait Until Element Is Visible    ${UserFirstnameField}    timeout=20
